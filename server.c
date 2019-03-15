@@ -7,6 +7,7 @@
 #include <stdlib.h> 
 #include <netinet/in.h> 
 #include <string.h> 
+#include <pthread.h>
 #define PORT 8080 
 
 int main(int argc, char const *argv[]) 
@@ -17,6 +18,7 @@ int main(int argc, char const *argv[])
 	int addrlen = sizeof(address); 
 	char buffer[1024] = {0}; 
 	char *hello = "Hello from server"; 
+	pthread_t thread1, thread2;
 	
 	// Creating socket file descriptor
 	// AF_INET is IPv4, SOCK_STREAM is tcp connection
@@ -58,23 +60,33 @@ int main(int argc, char const *argv[])
 		perror("accept"); 
 		exit(EXIT_FAILURE); 
 	} 
-	
 
-	while(1){
+while(1){
+
 	valread = read( client_socket , buffer, 1024); 
 	printf("%s",buffer ); 
+
+	
+	for(size_t i = 0; i < 1024; i++)
+	{
+		buffer[i]='\0';
+	}
 	
 	fgets(buffer,sizeof(buffer),stdin);
 	
 	send(client_socket , buffer , strlen(buffer) , 0 ); 
 
+
 	for(size_t i = 0; i < 1024; i++)
 	{
 		buffer[i]='\0';
 	}
+	
+
+}
 
 
-	}
+	
 	 
 	return 0; 
 } 

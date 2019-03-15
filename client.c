@@ -45,6 +45,8 @@ int main(int argc, char const *argv[])
 	while(1){
 		fgets(buffer,sizeof(buffer),stdin);
 	send(sock , buffer , strlen(buffer) , 0 ); 
+
+	
 	for(size_t i = 0; i < 1024; i++)
 	{
 		buffer[i]='\0';
@@ -52,6 +54,15 @@ int main(int argc, char const *argv[])
 	
 	valread = read( sock , buffer, 1024); 
 	printf("%s",buffer ); 
+
+	
+
+	for(size_t i = 0; i < 1024; i++)
+	{
+		buffer[i]='\0';
+	}
+
+	
 
 }
 
