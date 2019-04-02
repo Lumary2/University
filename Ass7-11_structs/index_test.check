@@ -1,0 +1,55 @@
+#include "I_FileStructure.h"
+#test I_FileStructure_test
+
+
+
+initializeIndexArray();
+
+object Object1 = {1, "Lisa", "Teichstraße 2"};
+
+object Object2 = {2, "Hans", "Gartenstraße 2"};
+object Object3 = {3, "Lisa2", "Teichstraße 2"};
+
+object Object4 = {4, "Hans2", "Gartenstraße 2"};
+object Object5 = {5, "Lisa3", "Teichstraße 2"};
+
+object Object6 = {6, "Jens", "Gartenstraße 2"};
+
+object* Pob1=&Object1;
+object* Pob2=&Object2;
+object* Pob3=&Object3;
+object* Pob4=&Object4;
+object* Pob5=&Object5;
+object* Pob6=&Object6;
+
+
+addToFileStructure(Pob1,calcHash(Pob1));
+
+addToFileStructure(Pob2,calcHash(Pob2));
+
+addToFileStructure(Pob3,calcHash(Pob3));
+
+addToFileStructure(Pob4,calcHash(Pob4));
+
+addToFileStructure(Pob5,calcHash(Pob5));
+
+addToFileStructure(Pob6,calcHash(Pob6));
+
+//check addToFileStructure
+char*name=findStruct(1);
+
+ck_assert_str_eq("Lisa",name);
+
+//check content of overflow
+char*name2=IndexArray[0][0]->name;
+ck_assert_str_eq("Hans",name2);
+
+
+//check delete
+deleteStruct(6);
+char*name3=findStruct(6);
+ck_assert_ptr_null(name3);
+
+
+
+

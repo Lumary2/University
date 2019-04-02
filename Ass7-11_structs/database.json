@@ -1,0 +1,12 @@
+{
+"user": [
+{ "name":"Hans",
+ "adress":"Gartenstraße 2",
+ "id":2
+},
+{ "name":"Lisa",
+ "adress":"Teichstraße 2",
+ "id":1
+}
+]
+}
