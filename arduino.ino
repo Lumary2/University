@@ -11,6 +11,7 @@ void setup() {
 }
 
 void loop() {
+Serial.println("how many times shall I blink?");
 String name= Serial.readString();
 Serial.println(name);
 
