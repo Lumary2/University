@@ -12,19 +12,18 @@ void setup() {
 
 void loop() {
 Serial.println("how many times shall I blink?");
+while(Serial.available()==0)  
+  {  
+      
+  } 
 String name= Serial.readString();
 Serial.println(name);
 
-//100 milliseconds
-if(name=="1\n"){
-LEDBlink();
+for(int i=0;i<name.toInt();i++){
+  LEDBlink();
 }
 
-if(name.equals("2\n")){
-LEDBlink();
-LEDBlink();
 
-}
 }
 
 void LEDBlink(){
@@ -35,3 +34,4 @@ delay(delayPeriod);
 digitalWrite(ledPin,LOW);
 delay(delayPeriod);
 }
+
