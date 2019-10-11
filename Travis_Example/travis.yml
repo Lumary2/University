@@ -1,0 +1,9 @@
+language: java
+
+version:
+    
+    - 11.0.4
+    
+script:
+    
+    - test/test/Travis_test
